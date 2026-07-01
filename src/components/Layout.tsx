@@ -3,15 +3,19 @@ import { NavLink, Outlet } from 'react-router-dom';
 import {
   Headphones, LayoutDashboard, Settings,
   PhoneCall, BarChart3, Bot, Bell,
+  MessageCircle, Target, Users,
 } from 'lucide-react';
 import { dashboardStats } from '../data/mockData';
 
 const navItems = [
   { to: '/agent', icon: Headphones, label: 'Agent Desktop' },
   { to: '/supervisor', icon: LayoutDashboard, label: 'Supervisor' },
-  { to: '/admin', icon: Settings, label: 'Admin / PBX' },
+  { to: '/whatsapp', icon: MessageCircle, label: 'WhatsApp Inbox' },
+  { to: '/customers', icon: Users, label: 'Customer 360°' },
+  { to: '/leads', icon: Target, label: 'Leads & Bookings' },
   { to: '/calls', icon: PhoneCall, label: 'Call History' },
   { to: '/analytics', icon: BarChart3, label: 'Analytics' },
+  { to: '/admin', icon: Settings, label: 'Admin / PBX' },
 ];
 
 export function Layout() {

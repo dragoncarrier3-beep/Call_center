@@ -134,3 +134,152 @@ export const dashboardStats = {
   aiResolved: 34,
   aiHandoffRate: 18,
 };
+
+// --- Milestone 2 & 3 additions ---
+
+export type LifecycleStage = 'new' | 'prospect' | 'active' | 'vip' | 'churned';
+export type CallOutcome = 'sale' | 'follow-up' | 'no-answer' | 'not-interested' | 'callback' | 'resolved';
+export type InteractionType = 'call' | 'whatsapp' | 'note' | 'booking' | 'lead';
+
+export interface WhatsAppConversation {
+  id: string;
+  customerName: string;
+  phone: string;
+  lastMessage: string;
+  timestamp: string;
+  unread: number;
+  status: 'open' | 'pending' | 'resolved';
+  assignedAgent: string;
+  avatar: string;
+}
+
+export interface WhatsAppMessage {
+  id: string;
+  sender: 'customer' | 'agent' | 'system';
+  text: string;
+  time: string;
+}
+
+export interface Lead {
+  id: string;
+  name: string;
+  company: string;
+  phone: string;
+  email: string;
+  source: 'call' | 'whatsapp' | 'website' | 'referral';
+  status: 'new' | 'contacted' | 'qualified' | 'proposal' | 'won' | 'lost';
+  value: number;
+  assignedAgent: string;
+  createdAt: string;
+  lifecycle: LifecycleStage;
+}
+
+export interface Booking {
+  id: string;
+  customerName: string;
+  title: string;
+  date: string;
+  time: string;
+  agent: string;
+  status: 'scheduled' | 'completed' | 'cancelled' | 'no-show';
+  type: 'demo' | 'consultation' | 'follow-up' | 'onboarding';
+}
+
+export interface Interaction {
+  id: string;
+  type: InteractionType;
+  title: string;
+  description: string;
+  agent: string;
+  timestamp: string;
+  outcome?: CallOutcome;
+}
+
+export interface AgentPerformance {
+  agent: string;
+  avatar: string;
+  callsHandled: number;
+  avgHandleTime: string;
+  conversionRate: number;
+  leadsWon: number;
+  satisfaction: number;
+}
+
+export const lifecycleStages: { id: LifecycleStage; label: string; color: string }[] = [
+  { id: 'new', label: 'New', color: 'bg-slate-500/20 text-slate-300' },
+  { id: 'prospect', label: 'Prospect', color: 'bg-blue-500/20 text-blue-400' },
+  { id: 'active', label: 'Active', color: 'bg-emerald-500/20 text-emerald-400' },
+  { id: 'vip', label: 'VIP', color: 'bg-amber-500/20 text-amber-400' },
+  { id: 'churned', label: 'Churned', color: 'bg-red-500/20 text-red-400' },
+];
+
+export const callOutcomes: { id: CallOutcome; label: string }[] = [
+  { id: 'sale', label: 'Sale Closed' },
+  { id: 'follow-up', label: 'Follow-up Required' },
+  { id: 'callback', label: 'Callback Scheduled' },
+  { id: 'resolved', label: 'Issue Resolved' },
+  { id: 'no-answer', label: 'No Answer' },
+  { id: 'not-interested', label: 'Not Interested' },
+];
+
+export const whatsappConversations: WhatsAppConversation[] = [
+  { id: 'WA-101', customerName: 'Ahmed Al-Rashid', phone: '+966 50 123 4567', lastMessage: 'Can you send me the Enterprise plan pricing?', timestamp: '14:45', unread: 2, status: 'open', assignedAgent: 'Fatima Al-Hassan', avatar: 'AR' },
+  { id: 'WA-102', customerName: 'Klaus Weber', phone: '+49 170 1234567', lastMessage: 'Thank you, the SIP trunk is working perfectly now.', timestamp: '13:20', unread: 0, status: 'resolved', assignedAgent: 'Aisha Rahman', avatar: 'KW' },
+  { id: 'WA-103', customerName: 'Layla Hassan', phone: '+966 55 987 6543', lastMessage: 'I need to reschedule my demo for next Tuesday.', timestamp: '12:05', unread: 1, status: 'pending', assignedAgent: 'Sarah Mitchell', avatar: 'LH' },
+  { id: 'WA-104', customerName: 'Maria Garcia', phone: '+1 555 234 5678', lastMessage: 'Is WhatsApp integration included in the Professional plan?', timestamp: '11:30', unread: 0, status: 'open', assignedAgent: 'James Wilson', avatar: 'MG' },
+  { id: 'WA-105', customerName: 'John Patterson', phone: '+44 7700 900123', lastMessage: 'Great call earlier — please send the proposal.', timestamp: '14:35', unread: 0, status: 'open', assignedAgent: 'Sarah Mitchell', avatar: 'JP' },
+];
+
+export const whatsappMessages: WhatsAppMessage[] = [
+  { id: '1', sender: 'customer', text: 'Hi, I saw your ad about call center solutions for Saudi businesses.', time: '14:20' },
+  { id: '2', sender: 'agent', text: 'Hello Ahmed! Thank you for reaching out. I\'d be happy to help. Are you looking for a full call center setup or SIP trunking only?', time: '14:22' },
+  { id: '3', sender: 'customer', text: 'We need both — call center with AI voice and SIP for our Riyadh office.', time: '14:28' },
+  { id: '4', sender: 'agent', text: 'Perfect. Our Enterprise plan covers multi-region SIP (UK, Saudi, Germany) plus AI voice assistant. Would you like a demo call?', time: '14:35' },
+  { id: '5', sender: 'customer', text: 'Can you send me the Enterprise plan pricing?', time: '14:45' },
+];
+
+export const leads: Lead[] = [
+  { id: 'L-201', name: 'John Patterson', company: 'Patterson Logistics Ltd', phone: '+44 7700 900123', email: 'john.p@patterson-logistics.co.uk', source: 'call', status: 'proposal', value: 12000, assignedAgent: 'Sarah Mitchell', createdAt: 'Jul 1', lifecycle: 'prospect' },
+  { id: 'L-202', name: 'Ahmed Al-Rashid', company: 'Al-Rashid Trading Co.', phone: '+966 50 123 4567', email: 'ahmed@alrashid.sa', source: 'whatsapp', status: 'qualified', value: 8500, assignedAgent: 'Fatima Al-Hassan', createdAt: 'Jun 30', lifecycle: 'prospect' },
+  { id: 'L-203', name: 'Klaus Weber', company: 'Weber GmbH', phone: '+49 170 1234567', email: 'k.weber@weber-gmbh.de', source: 'referral', status: 'won', value: 6200, assignedAgent: 'Aisha Rahman', createdAt: 'Jun 28', lifecycle: 'active' },
+  { id: 'L-204', name: 'Maria Garcia', company: 'Garcia Solutions', phone: '+1 555 234 5678', email: 'maria@garcia-sol.com', source: 'website', status: 'contacted', value: 4500, assignedAgent: 'James Wilson', createdAt: 'Jun 29', lifecycle: 'new' },
+  { id: 'L-205', name: 'Layla Hassan', company: 'Hassan Enterprises', phone: '+966 55 987 6543', email: 'layla@hassan-ent.sa', source: 'call', status: 'new', value: 9800, assignedAgent: 'Sarah Mitchell', createdAt: 'Jul 1', lifecycle: 'new' },
+];
+
+export const bookings: Booking[] = [
+  { id: 'B-301', customerName: 'Ahmed Al-Rashid', title: 'Enterprise Plan Demo', date: 'Jul 3', time: '10:00 AM', agent: 'Fatima Al-Hassan', status: 'scheduled', type: 'demo' },
+  { id: 'B-302', customerName: 'John Patterson', title: 'Proposal Review Call', date: 'Jul 2', time: '2:00 PM', agent: 'Sarah Mitchell', status: 'scheduled', type: 'follow-up' },
+  { id: 'B-303', customerName: 'Klaus Weber', title: 'SIP Trunk Onboarding', date: 'Jul 1', time: '11:00 AM', agent: 'Aisha Rahman', status: 'completed', type: 'onboarding' },
+  { id: 'B-304', customerName: 'Layla Hassan', title: 'Product Consultation', date: 'Jul 4', time: '3:30 PM', agent: 'Sarah Mitchell', status: 'scheduled', type: 'consultation' },
+  { id: 'B-305', customerName: 'Maria Garcia', title: 'WhatsApp Integration Demo', date: 'Jun 30', time: '4:00 PM', agent: 'James Wilson', status: 'no-show', type: 'demo' },
+];
+
+export const interactionTimeline: Interaction[] = [
+  { id: 'I-1', type: 'call', title: 'Inbound call — Sales', description: 'Discussed Enterprise plan upgrade for Saudi expansion. AI handled first 48s.', agent: 'Sarah Mitchell', timestamp: 'Today, 14:32', outcome: 'follow-up' },
+  { id: 'I-2', type: 'whatsapp', title: 'WhatsApp message', description: '"Great call earlier — please send the proposal."', agent: 'Sarah Mitchell', timestamp: 'Today, 14:35' },
+  { id: 'I-3', type: 'note', title: 'Agent note added', description: 'Decision maker. Budget approved for Q3. Send proposal by EOD.', agent: 'Sarah Mitchell', timestamp: 'Today, 14:38' },
+  { id: 'I-4', type: 'booking', title: 'Proposal Review Call scheduled', description: 'Jul 2 at 2:00 PM with Sarah Mitchell', agent: 'Sarah Mitchell', timestamp: 'Today, 14:40' },
+  { id: 'I-5', type: 'lead', title: 'Lead status updated', description: 'Status changed: Qualified → Proposal', agent: 'Sarah Mitchell', timestamp: 'Today, 14:41' },
+  { id: 'I-6', type: 'call', title: 'Outbound call — Follow-up', description: 'Previous call about billing issue. Resolved successfully.', agent: 'Aisha Rahman', timestamp: 'Yesterday, 16:15', outcome: 'resolved' },
+  { id: 'I-7', type: 'whatsapp', title: 'WhatsApp conversation', description: 'Customer confirmed SIP trunk working. Sent satisfaction survey.', agent: 'Aisha Rahman', timestamp: 'Yesterday, 13:20', outcome: 'resolved' },
+];
+
+export const agentPerformance: AgentPerformance[] = [
+  { agent: 'Sarah Mitchell', avatar: 'SM', callsHandled: 24, avgHandleTime: '4:12', conversionRate: 32, leadsWon: 5, satisfaction: 4.8 },
+  { agent: 'Fatima Al-Hassan', avatar: 'FA', callsHandled: 27, avgHandleTime: '4:01', conversionRate: 28, leadsWon: 4, satisfaction: 4.7 },
+  { agent: 'Aisha Rahman', avatar: 'AR', callsHandled: 31, avgHandleTime: '5:02', conversionRate: 35, leadsWon: 6, satisfaction: 4.9 },
+  { agent: 'James Wilson', avatar: 'JW', callsHandled: 18, avgHandleTime: '3:45', conversionRate: 22, leadsWon: 3, satisfaction: 4.5 },
+  { agent: 'Marco Rossi', avatar: 'MR', callsHandled: 22, avgHandleTime: '4:38', conversionRate: 25, leadsWon: 3, satisfaction: 4.6 },
+];
+
+export const customerReports = {
+  newCustomers: 18,
+  returningCustomers: 42,
+  churned: 3,
+  lifecycleDistribution: [
+    { stage: 'New', count: 12, pct: 15 },
+    { stage: 'Prospect', count: 28, pct: 35 },
+    { stage: 'Active', count: 32, pct: 40 },
+    { stage: 'VIP', count: 8, pct: 10 },
+  ],
+};

@@ -1,13 +1,26 @@
-import { Bot, Search, Filter } from 'lucide-react';
+import { Bot, Search, Filter, MessageCircle } from 'lucide-react';
 import { PageHeader } from '../components/Layout';
 import { SentimentBadge } from '../components/StatusBadge';
-import { callHistory } from '../data/mockData';
+import { callHistory, callOutcomes } from '../data/mockData';
 
 const statusStyles: Record<string, string> = {
   completed: 'text-emerald-400 bg-emerald-400/10',
   missed: 'text-red-400 bg-red-400/10',
   transferred: 'text-amber-400 bg-amber-400/10',
   'ai-handled': 'text-brand-400 bg-brand-400/10',
+};
+
+const outcomeLabels: Record<string, string> = Object.fromEntries(
+  callOutcomes.map((o) => [o.id, o.label]),
+);
+
+const mockOutcomes: Record<string, string> = {
+  'C-4821': 'follow-up',
+  'C-4820': 'resolved',
+  'C-4819': 'resolved',
+  'C-4818': 'callback',
+  'C-4817': 'no-answer',
+  'C-4816': 'sale',
 };
 
 export function CallHistoryPage() {
@@ -45,8 +58,9 @@ export function CallHistoryPage() {
                 <th className="text-left px-3 py-3 font-medium">Queue</th>
                 <th className="text-left px-3 py-3 font-medium">Duration</th>
                 <th className="text-left px-3 py-3 font-medium">Status</th>
+                <th className="text-left px-3 py-3 font-medium">Outcome</th>
                 <th className="text-left px-3 py-3 font-medium">Sentiment</th>
-                <th className="text-left px-3 py-3 font-medium">AI</th>
+                <th className="text-left px-3 py-3 font-medium">Channel</th>
                 <th className="text-right px-5 py-3 font-medium">Time</th>
               </tr>
             </thead>
@@ -66,12 +80,21 @@ export function CallHistoryPage() {
                       {call.status.replace('-', ' ')}
                     </span>
                   </td>
+                  <td className="px-3 py-3">
+                    {mockOutcomes[call.id] ? (
+                      <span className="px-2 py-0.5 bg-surface-600 text-slate-300 text-xs rounded">
+                        {outcomeLabels[mockOutcomes[call.id]]}
+                      </span>
+                    ) : (
+                      <span className="text-xs text-slate-600">—</span>
+                    )}
+                  </td>
                   <td className="px-3 py-3"><SentimentBadge sentiment={call.sentiment} /></td>
                   <td className="px-3 py-3">
                     {call.aiAssisted ? (
                       <Bot className="w-4 h-4 text-brand-400" />
                     ) : (
-                      <span className="text-xs text-slate-600">—</span>
+                      <MessageCircle className="w-4 h-4 text-emerald-400 opacity-50" />
                     )}
                   </td>
                   <td className="px-5 py-3 text-sm text-slate-400 text-right">{call.timestamp}</td>

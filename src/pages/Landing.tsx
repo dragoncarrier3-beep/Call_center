@@ -1,23 +1,39 @@
 import { Link } from 'react-router-dom';
 import {
   Headphones, LayoutDashboard, Settings, PhoneCall,
-  Bot, Globe, Shield, Zap, ArrowRight,
+  Bot, Shield, Zap, ArrowRight, MessageCircle,
+  Users, Target, BarChart3,
 } from 'lucide-react';
 
 const features = [
   { icon: PhoneCall, title: 'SIP Trunking', desc: 'Multi-region SIP with UK, Saudi, Germany support' },
   { icon: Bot, title: 'AI Voice Agent', desc: 'Intelligent IVR with seamless human handoff' },
   { icon: Headphones, title: 'Agent Desktop', desc: 'Full softphone with CRM, notes, and transfers' },
+  { icon: MessageCircle, title: 'WhatsApp Business', desc: 'Unified inbox linked to Customer 360°' },
+  { icon: Users, title: 'Customer 360°', desc: 'Unified profile with calls, messages, and timeline' },
+  { icon: Target, title: 'Leads & Bookings', desc: 'Pipeline management and scheduling' },
   { icon: LayoutDashboard, title: 'Supervisor Wallboard', desc: 'Real-time queues, SLA, and agent monitoring' },
-  { icon: Globe, title: 'WhatsApp Integration', desc: 'Unified inbox for voice and messaging' },
+  { icon: BarChart3, title: 'Analytics & Reports', desc: 'Agent performance, customer reports, CSV/PDF export' },
   { icon: Shield, title: 'Enterprise Security', desc: 'Role-based access, encryption, audit logs' },
 ];
 
 const demos = [
   { to: '/agent', icon: Headphones, label: 'Agent Desktop', color: 'bg-blue-600' },
-  { to: '/supervisor', icon: LayoutDashboard, label: 'Supervisor Wallboard', color: 'bg-emerald-600' },
-  { to: '/admin', icon: Settings, label: 'Admin / PBX Console', color: 'bg-violet-600' },
-  { to: '/calls', icon: PhoneCall, label: 'Call History & CRM', color: 'bg-amber-600' },
+  { to: '/supervisor', icon: LayoutDashboard, label: 'Supervisor', color: 'bg-emerald-600' },
+  { to: '/whatsapp', icon: MessageCircle, label: 'WhatsApp Inbox', color: 'bg-green-600' },
+  { to: '/customers', icon: Users, label: 'Customer 360°', color: 'bg-cyan-600' },
+  { to: '/leads', icon: Target, label: 'Leads & Bookings', color: 'bg-orange-600' },
+  { to: '/admin', icon: Settings, label: 'Admin / PBX', color: 'bg-violet-600' },
+  { to: '/calls', icon: PhoneCall, label: 'Call History', color: 'bg-amber-600' },
+  { to: '/analytics', icon: BarChart3, label: 'Analytics', color: 'bg-pink-600' },
+];
+
+const milestones = [
+  { m: 'M1', title: 'Infrastructure', items: 'Server, DB, Auth, SIP, WhatsApp' },
+  { m: 'M2', title: 'Customer 360°', items: 'Profile, history, outcomes, tagging' },
+  { m: 'M3', title: 'Agent Ops', items: 'Dashboard, calls, leads, bookings' },
+  { m: 'M4', title: 'Analytics', items: 'Reports, agent perf, exports' },
+  { m: 'M5', title: 'Go-Live', items: 'Testing, optimization, deployment' },
 ];
 
 export function Landing() {
@@ -54,11 +70,11 @@ export function Landing() {
           <span className="text-brand-400">with AI voice built in</span>
         </h1>
         <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10">
-          Enterprise-grade VoIP platform with SIP trunking, intelligent AI assistants,
-          agent dashboards, and multi-region support — built for scale.
+          Enterprise-grade VoIP platform with SIP trunking, WhatsApp Business,
+          Customer 360°, lead management, and multi-region support.
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto mb-16">
           {demos.map(({ to, icon: Icon, label, color }) => (
             <Link
               key={to}
@@ -70,6 +86,19 @@ export function Landing() {
               </div>
               <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">{label}</span>
             </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 pb-12">
+        <h2 className="text-xl font-semibold text-white text-center mb-6">Project Milestones</h2>
+        <div className="grid md:grid-cols-5 gap-3 max-w-4xl mx-auto">
+          {milestones.map(({ m, title, items }) => (
+            <div key={m} className="p-4 bg-surface-800 border border-slate-700/50 rounded-xl text-center">
+              <span className="inline-block px-2 py-0.5 bg-brand-600/20 text-brand-400 text-xs font-bold rounded mb-2">{m}</span>
+              <p className="text-sm font-semibold text-white mb-1">{title}</p>
+              <p className="text-[10px] text-slate-500 leading-relaxed">{items}</p>
+            </div>
           ))}
         </div>
       </section>
