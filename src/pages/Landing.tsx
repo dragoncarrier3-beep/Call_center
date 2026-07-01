@@ -120,7 +120,7 @@ export function Landing() {
 
       <footer className="border-t border-slate-700/50 py-6 text-center">
         <p className="text-xs text-slate-500">
-          CallCenter Pro Demo · Built by Tran Nam · VoIP + AI Voice Platform
+          CallCenter Pro Demo · Enterprise VoIP + AI Voice Platform
         </p>
       </footer>
     </div>

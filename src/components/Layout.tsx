@@ -69,11 +69,11 @@ export function Layout() {
         <div className="p-3 border-t border-slate-700/50">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-full bg-brand-600/30 border border-brand-500/50 flex items-center justify-center text-xs font-bold text-brand-300">
-              TN
+              SM
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-medium text-white truncate">Tran Nam</p>
-              <p className="text-[10px] text-slate-500">Ext. 101 · Admin</p>
+              <p className="text-xs font-medium text-white truncate">Sarah Mitchell</p>
+              <p className="text-[10px] text-slate-500">Ext. 101 · Agent</p>
             </div>
             <button className="relative p-1 text-slate-400 hover:text-slate-200">
               <Bell className="w-4 h-4" />
