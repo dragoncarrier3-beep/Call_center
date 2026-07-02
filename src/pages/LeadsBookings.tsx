@@ -51,8 +51,8 @@ export function LeadsBookings() {
         }
       />
 
-      <div className="flex-1 p-6 space-y-5 overflow-auto">
-        <div className="grid grid-cols-4 gap-4">
+      <div className="flex-1 p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <StatCard label="Active Leads" value={leads.length} />
           <StatCard label="Pipeline Value" value={`$${(pipelineValue / 1000).toFixed(1)}k`} accent="text-brand-400" />
           <StatCard label="Won This Month" value={`$${(wonValue / 1000).toFixed(1)}k`} accent="text-emerald-400" />
@@ -86,7 +86,8 @@ export function LeadsBookings() {
                 <Filter className="w-3.5 h-3.5" /> Filter
               </button>
             </div>
-            <table className="w-full">
+            <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px]">
               <thead>
                 <tr className="text-[10px] text-slate-500 uppercase tracking-wide border-b border-slate-700/50">
                   <th className="text-left px-5 py-2.5 font-medium">Lead</th>
@@ -133,6 +134,7 @@ export function LeadsBookings() {
                 })}
               </tbody>
             </table>
+            </div>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 gap-4">

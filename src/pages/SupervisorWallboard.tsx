@@ -17,8 +17,8 @@ export function SupervisorWallboard() {
         }
       />
 
-      <div className="flex-1 p-6 space-y-5 overflow-auto">
-        <div className="grid grid-cols-5 gap-4">
+      <div className="flex-1 p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
           <StatCard label="Active Calls" value={dashboardStats.activeCalls} accent="text-blue-400" />
           <StatCard label="Calls Today" value={dashboardStats.callsToday} />
           <StatCard label="Avg Wait Time" value={dashboardStats.avgWaitTime} accent="text-amber-400" />
@@ -26,7 +26,7 @@ export function SupervisorWallboard() {
           <StatCard label="AI Resolved" value={dashboardStats.aiResolved} sub={`${dashboardStats.aiHandoffRate}% handoff`} accent="text-brand-400" />
         </div>
 
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-5">
           <div className="bg-surface-700 rounded-xl border border-slate-700/50">
             <div className="px-5 py-3 border-b border-slate-700/50 flex items-center justify-between">
               <h3 className="text-sm font-semibold text-white">Queue Status</h3>
@@ -34,8 +34,8 @@ export function SupervisorWallboard() {
             </div>
             <div className="divide-y divide-slate-700/50">
               {queues.map((q) => (
-                <div key={q.id} className="px-5 py-4 flex items-center gap-4">
-                  <div className="flex-1">
+                <div key={q.id} className="px-4 sm:px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+                  <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
                       <p className="text-sm font-medium text-white">{q.name}</p>
                       {q.waiting > 3 && (
@@ -55,21 +55,22 @@ export function SupervisorWallboard() {
                       </span>
                     </div>
                   </div>
-                  <div className="text-center px-3">
-                    <p className={`text-2xl font-bold ${q.waiting > 3 ? 'text-red-400' : 'text-white'}`}>
+                  <div className="grid grid-cols-4 gap-2 sm:flex sm:items-center sm:gap-0 sm:shrink-0">
+                  <div className="text-center px-1 sm:px-3">
+                    <p className={`text-xl sm:text-2xl font-bold ${q.waiting > 3 ? 'text-red-400' : 'text-white'}`}>
                       {q.waiting}
                     </p>
                     <p className="text-[10px] text-slate-500">waiting</p>
                   </div>
-                  <div className="text-center px-3">
+                  <div className="text-center px-1 sm:px-3">
                     <p className="text-sm font-mono text-amber-400">{q.longestWait}</p>
                     <p className="text-[10px] text-slate-500">longest</p>
                   </div>
-                  <div className="text-center px-3">
+                  <div className="text-center px-1 sm:px-3">
                     <p className="text-sm font-medium text-white">{q.agentsAvailable}/{q.agentsTotal}</p>
                     <p className="text-[10px] text-slate-500">agents</p>
                   </div>
-                  <div className="w-16">
+                  <div className="sm:w-16">
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[10px] text-slate-500">SLA</span>
                       <span className={`text-xs font-medium ${q.sla >= 95 ? 'text-emerald-400' : q.sla >= 90 ? 'text-amber-400' : 'text-red-400'}`}>
@@ -83,6 +84,7 @@ export function SupervisorWallboard() {
                       />
                     </div>
                   </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -93,8 +95,8 @@ export function SupervisorWallboard() {
               <h3 className="text-sm font-semibold text-white">Agent Status</h3>
               <TrendingUp className="w-4 h-4 text-slate-500" />
             </div>
-            <div className="overflow-auto max-h-[340px]">
-              <table className="w-full">
+            <div className="overflow-x-auto max-h-[340px]">
+              <table className="w-full min-w-[560px]">
                 <thead>
                   <tr className="text-[10px] text-slate-500 uppercase tracking-wide">
                     <th className="text-left px-5 py-2 font-medium">Agent</th>
