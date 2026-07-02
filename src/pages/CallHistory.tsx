@@ -36,7 +36,7 @@ export function CallHistoryPage() {
               <input
                 type="text"
                 placeholder="Search calls, numbers, agents..."
-                className="pl-9 pr-3 py-1.5 bg-surface-700 border border-slate-600 rounded-lg text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-500 w-64"
+                className="pl-9 pr-3 py-1.5 bg-surface-700 border border-slate-600 rounded-lg text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-500 w-full sm:w-64"
               />
             </div>
             <button className="flex items-center gap-1.5 px-3 py-1.5 bg-surface-700 border border-slate-600 text-slate-300 text-sm rounded-lg hover:bg-surface-600 transition-colors">
@@ -47,8 +47,9 @@ export function CallHistoryPage() {
         }
       />
 
-      <div className="flex-1 p-6 overflow-auto">
-        <div className="bg-surface-700 rounded-xl border border-slate-700/50 overflow-hidden">
+      <div className="flex-1 p-4 sm:p-6 overflow-auto">
+        <div className="overflow-x-auto -mx-4 sm:mx-0">
+        <div className="min-w-[800px] sm:min-w-0 bg-surface-700 rounded-xl border border-slate-700/50 overflow-hidden">
           <table className="w-full">
             <thead>
               <tr className="text-[10px] text-slate-500 uppercase tracking-wide border-b border-slate-700/50 bg-surface-800/50">
@@ -102,6 +103,7 @@ export function CallHistoryPage() {
               ))}
             </tbody>
           </table>
+        </div>
         </div>
       </div>
     </div>

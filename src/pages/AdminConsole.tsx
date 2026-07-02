@@ -30,7 +30,7 @@ export function AdminConsole() {
         }
       />
 
-      <div className="flex-1 p-6 space-y-5 overflow-auto">
+      <div className="flex-1 p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-auto">
         <div className="bg-surface-700 rounded-xl border border-slate-700/50">
           <div className="px-5 py-3 border-b border-slate-700/50 flex items-center gap-2">
             <Server className="w-4 h-4 text-brand-400" />
@@ -78,7 +78,8 @@ export function AdminConsole() {
           <div className="px-5 py-3 border-b border-slate-700/50">
             <h3 className="text-sm font-semibold text-white">Extensions & Routing</h3>
           </div>
-          <table className="w-full">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[600px]">
             <thead>
               <tr className="text-[10px] text-slate-500 uppercase tracking-wide border-b border-slate-700/50">
                 <th className="text-left px-5 py-2.5 font-medium">Extension</th>
@@ -121,6 +122,7 @@ export function AdminConsole() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-4">

@@ -34,8 +34,8 @@ export function Customer360() {
         subtitle="Unified profile · All interactions in one view"
       />
 
-      <div className="flex-1 p-6 grid grid-cols-12 gap-5 overflow-auto">
-        <div className="col-span-4 space-y-4">
+      <div className="flex-1 p-4 sm:p-6 grid grid-cols-1 xl:grid-cols-12 gap-4 sm:gap-5 overflow-auto">
+        <div className="xl:col-span-4 space-y-4">
           <div className="bg-surface-700 rounded-xl border border-slate-700/50 p-5">
             <div className="flex items-start gap-4 mb-5">
               <div className="w-14 h-14 rounded-full bg-brand-600/20 border-2 border-brand-500/30 flex items-center justify-center text-lg font-bold text-brand-300">
@@ -119,7 +119,7 @@ export function Customer360() {
           )}
         </div>
 
-        <div className="col-span-8">
+        <div className="xl:col-span-8">
           <div className="bg-surface-700 rounded-xl border border-slate-700/50">
             <div className="px-5 py-3 border-b border-slate-700/50 flex items-center justify-between">
               <h3 className="text-sm font-semibold text-white">Interaction Timeline</h3>

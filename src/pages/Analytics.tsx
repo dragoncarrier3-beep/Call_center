@@ -44,15 +44,15 @@ export function AnalyticsPage() {
         }
       />
 
-      <div className="flex-1 p-6 space-y-5 overflow-auto">
-        <div className="grid grid-cols-4 gap-4">
+      <div className="flex-1 p-4 sm:p-6 space-y-4 sm:space-y-5 overflow-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <StatCard label="Total Calls" value={dashboardStats.callsToday} />
           <StatCard label="Service Level" value={`${dashboardStats.serviceLevel}%`} accent="text-emerald-400" />
           <StatCard label="AI Resolution Rate" value="68%" accent="text-brand-400" sub="34 of 50 AI-handled" />
           <StatCard label="Avg Handle Time" value="4:18" accent="text-amber-400" />
         </div>
 
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
           <div className="bg-surface-700 rounded-xl border border-slate-700/50 p-5">
             <h3 className="text-sm font-semibold text-white mb-4">Call Volume by Hour</h3>
             <div className="flex items-end gap-2 h-48">
@@ -115,7 +115,8 @@ export function AnalyticsPage() {
               <FileText className="w-3.5 h-3.5" /> Export
             </button>
           </div>
-          <table className="w-full">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px]">
             <thead>
               <tr className="text-[10px] text-slate-500 uppercase tracking-wide border-b border-slate-700/50">
                 <th className="text-left px-5 py-2.5 font-medium">Agent</th>
@@ -146,12 +147,13 @@ export function AnalyticsPage() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
           <div className="bg-surface-700 rounded-xl border border-slate-700/50 p-5">
             <h3 className="text-sm font-semibold text-white mb-4">Regional Call Distribution</h3>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-2 gap-3">
               {[
                 { region: 'United Kingdom', calls: 186, pct: 38 },
                 { region: 'Saudi Arabia', calls: 142, pct: 29 },
@@ -177,7 +179,7 @@ export function AnalyticsPage() {
                 <FileText className="w-3.5 h-3.5" /> Export
               </button>
             </div>
-            <div className="grid grid-cols-3 gap-3 mb-4">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4">
               <div className="bg-surface-600 rounded-lg p-3 text-center">
                 <p className="text-2xl font-bold text-emerald-400">{customerReports.newCustomers}</p>
                 <p className="text-[10px] text-slate-500">New</p>

@@ -40,7 +40,7 @@ export function Landing() {
   return (
     <div className="min-h-full bg-surface-900">
       <header className="border-b border-slate-700/50 bg-surface-800/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-lg bg-brand-600 flex items-center justify-center">
               <PhoneCall className="w-5 h-5 text-white" />
@@ -60,12 +60,12 @@ export function Landing() {
         </div>
       </header>
 
-      <section className="max-w-6xl mx-auto px-6 py-16 text-center">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-600/10 border border-brand-500/20 rounded-full text-xs text-brand-400 font-medium mb-6">
           <Zap className="w-3 h-3" />
           Production-ready base platform
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
           Next-generation call center<br />
           <span className="text-brand-400">with AI voice built in</span>
         </h1>

@@ -24,8 +24,8 @@ export function AgentWorkspace() {
         }
       />
 
-      <div className="flex-1 p-6 grid grid-cols-12 gap-5 overflow-auto">
-        <div className="col-span-3">
+      <div className="flex-1 p-4 sm:p-6 grid grid-cols-1 xl:grid-cols-12 gap-4 sm:gap-5 overflow-auto">
+        <div className="xl:col-span-3">
           <Softphone
             callerName="John Patterson"
             callerNumber="+44 7700 900123"
@@ -34,7 +34,7 @@ export function AgentWorkspace() {
           />
         </div>
 
-        <div className="col-span-5 space-y-4">
+        <div className="xl:col-span-5 space-y-4">
           <div className="bg-surface-700 rounded-xl border border-slate-700/50 p-5">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-semibold text-white">Customer 360° Profile</h3>
@@ -129,7 +129,7 @@ export function AgentWorkspace() {
           </div>
         </div>
 
-        <div className="col-span-4 space-y-4">
+        <div className="xl:col-span-4 space-y-4">
           <div className="bg-surface-700 rounded-xl border border-slate-700/50 p-5">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
